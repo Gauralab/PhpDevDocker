@@ -165,8 +165,18 @@ services:
           retries: 3
           timeout: 5s
         restart: "no"
-### Soketi ###############################################
-
+### Certbot ###############################################
+    certbot:
+        image: gauralab/certbot
+        container_name: ${CONTAINER_PREFIX:-code}certbot        
+        networks:
+            - backend
+        labels:
+            - "app=ngincertbotx"
+        restart: "no" 
+        volumes:
+            - ${HOST_DATA_PATH}/certbot/etc:/etc/letsencrypt   
+            - ${HOST_DATA_PATH}/certbot/var/lib:/var/lib/letsencrypt   
 ### Mailhog ###############################################
     mailhog:
         image: gauralab/mailhog

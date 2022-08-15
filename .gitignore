@@ -1,3 +1,5 @@
 .env
 .DS_Store
 Old
+nginx/conf/sites-available/*
+nginx/conf/ssl/*
